@@ -16,3 +16,15 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.btn-container {
+  padding: 470px 350px 96px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn {
+  width: 125px;
+  height: 36px;
+}
