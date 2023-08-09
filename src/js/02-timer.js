@@ -26,9 +26,10 @@ const options = {
     console.log(selectedDates[0]);
     selectedDate = selectedDates[0];
     if (selectedDate < this.defaultDate) {
-      window.alert("Please choose a date in the future");
-      Notiflix.Notify.warning('Memento te hominem esse');
+      Notify.failure('Please choose a date in the future');
       refs.button.disadled = true;
+    } else {
+      refs.button.disadled = false;
     }
   },
 };
@@ -50,7 +51,7 @@ function convertMs(ms) {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  addContent()
+  addContent;
   return { days, hours, minutes, seconds };
 };
 
@@ -58,7 +59,7 @@ function addLeadingZero(value) {
   return String(value).padStart(2, 0);
 };
 
-function addContent() {
+const addContent = function () {
   refs.day.textContent = addLeadingZero(`${days}`);
   refs.hour.textContent = addLeadingZero(`${hours}`);
   refs.minute.textContent = addLeadingZero(`${minutes}`);
