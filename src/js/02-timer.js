@@ -25,20 +25,25 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     selectedDate = selectedDates[0];
-    if (selectedDate < this.defaultDate) {
+    if (selectedDate < new Date()) {
       Notify.failure('Please choose a date in the future');
-      refs.button.disadled = true;
+      refs.button.disabled = true;
     } else {
-      refs.button.disadled = false;
+      refs.button.disabled = false;
     }
   },
 };
 
-flatpickr(refs.input, options);
+flatpickr(refs.input, { ...options });
 
 function handleTimerOn() {
-  intervID = setInterval(convertMs, 1000);
-  refs.button.disadled = true;
+  intervID = setInterval(() => {
+    const currentDate = new Date().getTime();
+    const diffDate = selectedDate - currentDate;
+    convertMs(diffDate);
+    addContent();
+  }, 1000);
+  refs.button.disabled = true;
 };
 
 function convertMs(ms) {
@@ -51,16 +56,21 @@ function convertMs(ms) {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  addContent;
+  
+  const obj = { days, hours, minutes, seconds };
+  
   return { days, hours, minutes, seconds };
+  
 };
 
 function addLeadingZero(value) {
   return String(value).padStart(2, 0);
 };
 
-const addContent = function () {
-  refs.day.textContent = addLeadingZero(`${days}`);
+
+
+function addContent() {
+  refs.day.textContent = `${days}`;
   refs.hour.textContent = addLeadingZero(`${hours}`);
   refs.minute.textContent = addLeadingZero(`${minutes}`);
   refs.second.textContent = addLeadingZero(`${seconds}`);
