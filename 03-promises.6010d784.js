@@ -1,0 +1,2 @@
+const e=document.querySelector(".form");document.getElementById("btn");e.addEventListener("submit",(function(e){e.preventDefault();const{delay:t,step:n,amount:o}=e.currentTarget;let u=Number(t.value),r=Number(n.value),a=Number(o.value);for(let e=1;e<=a;e++);(function(e,t){const n=Math.random()>.3;new Promise(((o,u)=>{setTimeout((()=>{n?o({position:e,delay:t}):u({position:e,delay:t})}),t)}))})(position,u),u+=r}));
+//# sourceMappingURL=03-promises.6010d784.js.map

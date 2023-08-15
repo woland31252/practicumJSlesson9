@@ -1,0 +1,2 @@
+!function(){var e=document.querySelector(".form");document.getElementById("btn");e.addEventListener("submit",(function(e){e.preventDefault();for(var t=e.currentTarget,n=t.delay,o=t.step,u=t.amount,r=Number(n.value),a=Number(o.value),i=Number(u.value),m=1;m<=i;m++);(function(e,t){var n=Math.random()>.3;new Promise((function(o,u){setTimeout((function(){n?o({position:e,delay:t}):u({position:e,delay:t})}),t)}))})(position,r),r+=a}))}();
+//# sourceMappingURL=03-promises.c7266a72.js.map
