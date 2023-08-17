@@ -55,18 +55,21 @@ function convertMs(ms) {
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-  refs.day.textContent = `${addLeadingZero(days)}`;
-  refs.hour.textContent = `${addLeadingZero(hours)}`;
-  refs.minute.textContent = `${addLeadingZero(minutes)}`;
-  refs.second.textContent = `${addLeadingZero(seconds)}`;
-  
+  addContent({ days, hours, minutes, seconds }); 
   timerOff();
-  console.log({ days, hours, minutes, seconds });  
+   
 };
 
 function addLeadingZero(value) {
   return String(value).padStart(2, 0);
 };
+  
+function addContent(obj) {
+refs.day.textContent = `${addLeadingZero(obj.days)}`;
+refs.hour.textContent = `${addLeadingZero(obj.hours)}`;
+refs.minute.textContent = `${addLeadingZero(obj.minutes)}`;
+refs.second.textContent = `${addLeadingZero(obj.seconds)}`;
+}
 
 function timerOff() {
   if (
